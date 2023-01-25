@@ -5,18 +5,7 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-# - task: NodeTool@0
-#   inputs:
-#     versionSpec: '10.x'
-#   displayName: 'Install Node.js'
+- script: docker build -t juice .
+  displayName: 'building a docker container'
 
-- script: node -v
-  displayName: 'node --version'
 
-- script: |
-    npm i -g typescript ts-node
-    npm install --omit=dev --unsafe-perm
-    npm dedupe
-    rm -rf frontend/node_modules
-    rm -rf frontend/.angular
-    rm -rf frontend/src/assets
