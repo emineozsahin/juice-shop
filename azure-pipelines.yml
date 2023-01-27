@@ -5,7 +5,13 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- script: docker build -t juice .
-  displayName: 'building a docker container'
+# - script: docker build -t juice .
+#   displayName: 'building a docker container'
 
+- task: Docker@2
+  inputs:
+    containerRegistry: 'testdevops'
+    repository: 'DevOpstest'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
 
